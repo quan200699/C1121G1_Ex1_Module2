@@ -24,7 +24,7 @@ public class HotelManagement {
     public void addNewHotel(int index, Hotel hotel) {
         Hotel[] newHotels = new Hotel[this.hotels.length + 1];
         for (int i = 0; i < newHotels.length; i++) {
-            if (index < i) {
+            if (i < index) {
                 newHotels[i] = this.hotels[i];
             } else if (index == i) {
                 newHotels[i] = hotel;
