@@ -1,53 +1,41 @@
 package com.codegym;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HotelManagement {
-    private Hotel[] hotels = new Hotel[0];
+    private List<Hotel> hotels = new ArrayList<>();
 
-    public Hotel[] getHotels() {
-        return hotels;
-    }
-
-    public void setHotels(Hotel[] hotels) {
-        this.hotels = hotels;
-    }
-
-    public int size() {//Lấy ra độ dài mảng
-        return this.hotels.length;
+    public int size() {
+        return hotels.size();
     }
 
     public void displayAllHotel() {
-        for (int i = 0; i < this.hotels.length; i++) {
-            System.out.println(hotels[i]);
+        for (int i = 0; i < hotels.size(); i++) {
+            System.out.println(hotels.get(i));
         }
     }
 
-    public void addNewHotel(int index, Hotel hotel) {
-        Hotel[] newHotels = new Hotel[this.hotels.length + 1];
-        for (int i = 0; i < newHotels.length; i++) {
-            if (i < index) {
-                newHotels[i] = this.hotels[i];
-            } else if (index == i) {
-                newHotels[i] = hotel;
-            } else {
-                newHotels[i] = this.hotels[i - 1];
-            }
-        }
-        this.hotels = newHotels;
+    public void addNewHotel(Hotel hotel) {
+        this.hotels.add(hotel);
     }
 
     public void updateHotel(int index, Hotel hotel) {
-        this.hotels[index] = hotel;
+        hotels.set(index, hotel);//set là để thay đổi giá trị tại vị trí mình muốn
     }
 
     public void removeHotel(int index) {
-        Hotel[] newHotels = new Hotel[this.hotels.length - 1];
-        for (int i = 0; i < newHotels.length; i++) {
-            if (i < index) {
-                newHotels[i] = this.hotels[i];
-            } else {
-                newHotels[i] = this.hotels[i + 1];
+        hotels.remove(index);
+    }
+
+    public int findHotelByType(String type) {//Tìm kiếm khách sạn theo loại khách sạn
+        int index = -1;
+        for (int i = 0; i < hotels.size(); i++) {
+            if (hotels.get(i).getType().equals(type)) {
+                index = i;
+                break;
             }
         }
-        this.hotels = newHotels;
+        return index;
     }
 }

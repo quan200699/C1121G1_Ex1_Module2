@@ -20,15 +20,9 @@ public class Main {
                 }
                 case 2: {
                     System.out.println("---Thêm thông tin khách sạn");
-                    System.out.println("Nhập vị trí muốn thêm:");
-                    int index = scanner.nextInt();
                     scanner.nextLine();
-                    if (index < 0 || index > hotelManagement.size()) {
-                        System.out.println("Vị trí thêm vào không hợp lệ");
-                    } else {
-                        Hotel hotel = getHotel();
-                        hotelManagement.addNewHotel(index, hotel);
-                    }
+                    Hotel hotel = getHotel();
+                    hotelManagement.addNewHotel(hotel);
                     break;
                 }
                 case 3: {
